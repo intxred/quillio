@@ -1,0 +1,19 @@
+# Security headers. Cloudflare Pages and Netlify read this file as it is.
+# GitHub Pages ignores it (it cannot set headers). Vercel uses vercel.json instead.
+/*
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; connect-src 'self' https://formsubmit.co; form-action 'self'; base-uri 'self'; frame-ancestors 'none'; object-src 'none'
+
+/downloads/*
+  Content-Disposition: attachment
+  Cache-Control: public, max-age=3600
+
+/assets/*
+  Cache-Control: public, max-age=86400
+
+/media/*
+  Cache-Control: public, max-age=86400

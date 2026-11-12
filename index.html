@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Quillio: Learn Your Way In</title>
+<meta name="description" content="Quillio is a free quiz and assessment app for Mac and Windows. Write your own questions, choose the subjects and set the pass mark. Works offline.">
+<meta name="theme-color" content="#DDF264">
+<meta property="og:title" content="Quillio: Learn Your Way In">
+<meta property="og:description" content="A free, offline quiz and assessment app for Mac and Windows. Build your own quizzes, set the rules, and put them in front of any app.">
+<meta property="og:image" content="media/og-image.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- icon sprite -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-how" viewBox="0 0 24 24"><rect x="3" y="4" width="6" height="6" rx="1.5"/><rect x="15" y="14" width="6" height="6" rx="1.5"/><path d="M9 7h3a3 3 0 0 1 3 3v4"/></symbol>
+    <symbol id="i-solves" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6z"/><path d="M9 12l2 2 4-4"/></symbol>
+    <symbol id="i-try" viewBox="0 0 24 24"><path d="M4 20l4-1 11-11-3-3L5 16z"/><path d="M14 6l3 3"/></symbol>
+    <symbol id="i-watch" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9.5v5l4.5-2.5z"/></symbol>
+    <symbol id="i-setup" viewBox="0 0 24 24"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></symbol>
+    <symbol id="i-guide" viewBox="0 0 24 24"><path d="M5 4h10a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z"/><path d="M5 17a3 3 0 0 1 3-3h10"/></symbol>
+    <symbol id="i-readme" viewBox="0 0 24 24"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/></symbol>
+    <symbol id="i-contact" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2.5"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+    <symbol id="i-apple" viewBox="0 0 24 24"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-win" viewBox="0 0 24 24"><path d="M3 5.500l7.500-1v7H3zM11.500 4.400L21 3v8.500h-9.500zM3 12.500h7.500v7L3 18.500zM11.500 12.500H21V21l-9.500-1.400z" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M4.5 9h3.6v11H4.5zM6.3 3.5a2.1 2.1 0 1 1 0 4.2 2.1 2.1 0 0 1 0-4.2zM10.2 9h3.4v1.5c.5-.9 1.7-1.8 3.5-1.8 3.600 0 4.300 2.300 4.300 5.400V20h-3.600v-5.200c0-1.300 0-2.800-1.800-2.800s-2.100 1.300-2.100 2.700V20h-3.600z" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M4 7l8 6 8-6"/></symbol>
+  </defs>
+</svg>
+
+<!-- ============ TOP NAVIGATION ============ -->
+<header class="topbar" id="top">
+  <nav class="navbar" aria-label="Main">
+    <a class="brand" href="#top" aria-label="Quillio, back to top">
+      <span class="brand-mark" id="brandMark" aria-hidden="true"></span>
+      <span class="brand-name">Quillio</span>
+    </a>
+    <ul class="navlinks" id="navlinks">
+      <li><a href="#how" data-nav="how">How it works</a></li>
+      <li><a href="#solves" data-nav="solves">What it solves</a></li>
+      <li><a href="#watch" data-nav="watch">Watch</a></li>
+      <li><a href="#setup" data-nav="setup">Setup</a></li>
+      <li><a href="#guide" data-nav="guide">Guide</a></li>
+      <li><a href="#readme" data-nav="readme">Read me</a></li>
+      <li><a href="#contact" data-nav="contact">Contact</a></li>
+      <li class="nav-ink" aria-hidden="true"></li>
+    </ul>
+    <a class="btn btn-lime btn-sm nav-cta" href="#setup" data-dl-label>Download</a>
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="sheet" aria-label="Open menu"><span></span><span></span></button>
+  </nav>
+  <div class="sheet" id="sheet" hidden>
+    <div class="sheet-grid">
+      <a href="#how" class="sheet-card"><svg class="ico"><use href="#i-how"/></svg><b>How it works</b><span>A guarded app opens, the exam appears</span></a>
+      <a href="#solves" class="sheet-card"><svg class="ico"><use href="#i-solves"/></svg><b>What it solves</b><span>Your quizzes, your rules</span></a>
+      <a href="#try" class="sheet-card"><svg class="ico"><use href="#i-try"/></svg><b>Try the exam</b><span>Three real questions</span></a>
+      <a href="#watch" class="sheet-card"><svg class="ico"><use href="#i-watch"/></svg><b>Watch the demo</b><span>95 seconds, start to finish</span></a>
+      <a href="#setup" class="sheet-card"><svg class="ico"><use href="#i-setup"/></svg><b>Download and setup</b><span>Mac and Windows</span></a>
+      <a href="#guide" class="sheet-card"><svg class="ico"><use href="#i-guide"/></svg><b>Parent guide</b><span>Questions, rules, PIN</span></a>
+      <a href="#readme" class="sheet-card"><svg class="ico"><use href="#i-readme"/></svg><b>Read me</b><span>Requirements, limits, FAQ</span></a>
+      <a href="#contact" class="sheet-card"><svg class="ico"><use href="#i-contact"/></svg><b>Contact</b><span>Ask or report a problem</span></a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============ HERO ============ -->
+<section class="hero" aria-labelledby="h-hero">
+  <div class="hero-rings" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <h1 id="h-hero"><span class="hl">Learn Your</span> <span class="hl">Way In.</span></h1>
+      <p class="lede">Quillio is a free quiz and assessment app for Mac and Windows. Write your own questions, choose the subjects, set how many questions and what score passes. Use it for practice, or put a quiz in front of any app so it opens only after a pass.</p>
+      <div class="cta-row">
+        <a class="btn btn-ink btn-lg" href="#setup" id="heroDl" data-dl-primary><svg class="ico"><use href="#i-setup"/></svg><span data-dl-label>Download</span></a>
+        <a class="btn btn-ghost btn-lg" href="#watch"><svg class="ico"><use href="#i-watch"/></svg>Watch the demo</a>
+      </div>
+      <p class="fine" id="heroFine">Free to download. Works offline. No account.</p>
+    </div>
+    <div class="hero-stage" id="heroStage">
+      <div class="mascot-host" id="heroMascot"></div>
+      <p class="stage-hint" id="stageHint">Say hi. Poke the hedgehog.</p>
+    </div>
+  </div>
+
+  <!-- card navigation -->
+  <div class="wrap">
+    <ul class="cardnav" aria-label="Jump to a section">
+      <li><a class="ncard" href="#how"><svg class="ico"><use href="#i-how"/></svg><b>How it works</b><span>Five steps from game to quiz</span><svg class="go"><use href="#i-arrow"/></svg></a></li>
+      <li><a class="ncard" href="#solves"><svg class="ico"><use href="#i-solves"/></svg><b>What it solves</b><span>Six everyday problems</span><svg class="go"><use href="#i-arrow"/></svg></a></li>
+      <li><a class="ncard" href="#try"><svg class="ico"><use href="#i-try"/></svg><b>Try the exam</b><span>Answer three questions</span><svg class="go"><use href="#i-arrow"/></svg></a></li>
+      <li><a class="ncard" href="#watch"><svg class="ico"><use href="#i-watch"/></svg><b>Watch the demo</b><span>Exam and dashboard, 1:35</span><svg class="go"><use href="#i-arrow"/></svg></a></li>
+      <li><a class="ncard" href="#setup"><svg class="ico"><use href="#i-setup"/></svg><b>Download and setup</b><span>Mac pkg, Windows exe</span><svg class="go"><use href="#i-arrow"/></svg></a></li>
+      <li><a class="ncard" href="#guide"><svg class="ico"><use href="#i-guide"/></svg><b>Parent guide</b><span>Questions, rules and PIN</span><svg class="go"><use href="#i-arrow"/></svg></a></li>
+      <li><a class="ncard" href="#readme"><svg class="ico"><use href="#i-readme"/></svg><b>Read me</b><span>Requirements, limits, FAQ</span><svg class="go"><use href="#i-arrow"/></svg></a></li>
+      <li><a class="ncard" href="#contact"><svg class="ico"><use href="#i-contact"/></svg><b>Contact</b><span>Ask or report a problem</span><svg class="go"><use href="#i-arrow"/></svg></a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="sec sec-paper" id="how" data-mood="how" aria-labelledby="h-how">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="h-how">How it works</h2>
+      <p>The app gate is optional. It runs quietly in the background and only does something when an app on your list starts.</p>
+    </div>
+    <div class="stepper" id="stepper">
+      <ol class="steps" role="tablist" aria-label="Steps">
+        <li><button class="step on" role="tab" aria-selected="true" data-step="0"><i class="num">1</i><span><b>A guarded app opens</b><em>The monitor notices within half a second.</em></span><s class="bar"></s></button></li>
+        <li><button class="step" role="tab" aria-selected="false" data-step="1"><i class="num">2</i><span><b>The exam covers the screen</b><em>The app is closed and a full-screen exam appears.</em></span><s class="bar"></s></button></li>
+        <li><button class="step" role="tab" aria-selected="false" data-step="2"><i class="num">3</i><span><b>Answer the questions</b><em>Mixed subjects, no timer, a short explanation after each. You choose how many.</em></span><s class="bar"></s></button></li>
+        <li><button class="step" role="tab" aria-selected="false" data-step="3"><i class="num">4</i><span><b>Reach the pass mark</b><em>Pass and press the Open button. Miss it and try again. Each app can ask for more than one exam in a row.</em></span><s class="bar"></s></button></li>
+        <li><button class="step" role="tab" aria-selected="false" data-step="4"><i class="num">5</i><span><b>Close the app, it locks again</b><em>About eight seconds later, the gate is back.</em></span><s class="bar"></s></button></li>
+      </ol>
+      <div class="screen" id="screen" aria-live="polite">
+        <div class="chrome"><i></i><i></i><i></i><span id="screenTitle">play.example.com</span></div>
+        <div class="pane on" data-pane="0">
+          <div class="mock-game"><div class="tile"></div><div class="info"><h4>Space Quest</h4><p>A game you can play with friends</p><span class="play">Play</span></div></div>
+        </div>
+        <div class="pane" data-pane="1"><img src="assets/exam-intro.webp" alt="The exam start screen with the hedgehog and a Start the quiz button" loading="lazy" width="1100" height="619"></div>
+        <div class="pane" data-pane="2"><img src="assets/exam-q1_ok.webp" alt="A question answered correctly, with an explanation and a Next question button" loading="lazy" width="1100" height="619"></div>
+        <div class="pane" data-pane="3"><img src="assets/exam-result_pass.webp" alt="Result screen: 80 out of 100, you passed, the app is unlocked" loading="lazy" width="1100" height="619"></div>
+        <div class="pane" data-pane="4">
+          <div class="mock-lock"><div class="lockring"><svg viewBox="0 0 24 24" class="ico"><rect x="5" y="11" width="14" height="9" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div><b>Space Quest is locked</b><p>Open it again and the exam comes back.</p></div>
+        </div>
+        <p class="screen-note" id="screenNote">Real screenshot of the exam window. The game page here is only an illustration.</p>
+      </div>
+    </div>
+    <ul class="facts">
+      <li><b data-count="10">10</b><span>questions per exam (default)</span></li>
+      <li><b data-count="8">8</b><span>starter subjects</span></li>
+      <li><b data-count="80">80</b><span>starter questions</span></li>
+      <li><b data-count="70">70</b><span>to pass (default)</span></li>
+      <li><b data-count="0">0</b><span>accounts needed</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ WHAT IT SOLVES ============ -->
+<section class="sec sec-ink" id="solves" data-mood="solves" aria-labelledby="h-solves">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="h-solves">What it solves</h2>
+      <p>Pick a card to see how Quillio handles it.</p>
+    </div>
+    <ul class="solve-grid">
+      <li><button class="scard" aria-expanded="false">
+        <span class="s-front"><svg class="ico"><use href="#i-how"/></svg><b>Games first, homework later</b></span>
+        <span class="s-back">The exam comes before the app, every time it opens. No exam, no game.</span>
+      </button></li>
+      <li><button class="scard" aria-expanded="false">
+        <span class="s-front"><svg class="ico"><use href="#i-try"/></svg><b>Screen time that teaches nothing</b></span>
+        <span class="s-back">Mixed-subject quizzes with the right answer explained after each one. Create any subject and write as many questions as you like.</span>
+      </button></li>
+      <li><button class="scard" aria-expanded="false">
+        <span class="s-front"><svg class="ico"><use href="#i-solves"/></svg><b>One rule does not fit every quiz</b></span>
+        <span class="s-back">Guard only the apps you pick. Give each one its own number of questions, pass mark, unlock time and subjects. Everything else opens normally.</span>
+      </button></li>
+      <li><button class="scard" aria-expanded="false">
+        <span class="s-front"><svg class="ico"><use href="#i-readme"/></svg><b>Quizzes that fit your learner</b></span>
+        <span class="s-back">Any grade, language or topic. Create subjects, write questions, or import them from JSON or CSV. The 80 Grade 5 starter questions are just a starting point.</span>
+      </button></li>
+      <li><button class="scard" aria-expanded="false">
+        <span class="s-front"><svg class="ico"><use href="#i-contact"/></svg><b>Subscriptions, accounts, clouds</b></span>
+        <span class="s-back">None. It is free, it runs offline and every score and question stays on your computer.</span>
+      </button></li>
+      <li><button class="scard" aria-expanded="false">
+        <span class="s-front"><svg class="ico"><use href="#i-guide"/></svg><b>Settings a child can change</b></span>
+        <span class="s-back">Exit, parent unlock and every setting sit behind your PIN. Five wrong tries lock PIN entry for five minutes.</span>
+      </button></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ TRY THE EXAM ============ -->
+<section class="sec sec-lime" id="try" data-mood="try" aria-labelledby="h-try">
+  <div class="wrap try-grid">
+    <div class="sec-head">
+      <h2 id="h-try">Try the exam</h2>
+      <p>Three sample questions. Get two right to unlock the pretend game. The real exam has ten and needs 70 out of 100.</p>
+      <div class="mascot-host small" id="tryMascot"></div>
+    </div>
+    <div class="quiz" id="quiz" aria-live="polite">
+      <div class="q-top"><span class="chip" id="qSubject">Mathematics</span><span class="q-count" id="qCount">Question 1 of 3</span></div>
+      <div class="q-prog"><i id="qProg"></i></div>
+      <h3 id="qText">Which of these numbers is a prime number?</h3>
+      <div class="choices" id="qChoices"></div>
+      <div class="feedback" id="qFeedback" hidden></div>
+      <button class="btn btn-ink" id="qNext" hidden>Next question</button>
+      <div class="result" id="qResult" hidden>
+        <h3 id="rTitle"></h3><p id="rText"></p>
+        <button class="btn btn-ink" id="qAgain">Try again</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VIDEO ============ -->
+<section class="sec sec-paper" id="watch" data-mood="watch" aria-labelledby="h-watch">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="h-watch">Watch it work</h2>
+      <p>The real exam and the real parent dashboard, recorded start to finish in 95 seconds. Use the chapters to jump around.</p>
+    </div>
+    <div class="player" id="player">
+      <video id="demo" preload="none" playsinline poster="media/poster.jpg" controls>
+        <source src="media/demo.mp4" type="video/mp4">
+        Your browser can't play this video. <a href="media/demo.mp4">Download it instead.</a>
+      </video>
+      <button class="bigplay" id="bigplay" aria-label="Play the demo video"><span class="tri"></span><em>Play demo</em></button>
+    </div>
+    <div class="chapters" id="chapters" role="list" aria-label="Chapters"></div>
+  </div>
+</section>
+
+<!-- ============ SETUP ============ -->
+<section class="sec sec-ink" id="setup" data-mood="setup" aria-labelledby="h-setup">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="h-setup">Download and set up</h2>
+      <p>Install it on the computer where the guarded apps are used. The install takes a few minutes and needs the internet once. After that it works offline.</p>
+    </div>
+
+    <div class="ostabs" role="tablist" aria-label="Operating system">
+      <button role="tab" id="tab-mac" aria-selected="true" data-os="mac"><svg class="ico fill"><use href="#i-apple"/></svg>Mac</button>
+      <button role="tab" id="tab-win" aria-selected="false" data-os="win"><svg class="ico fill"><use href="#i-win"/></svg>Windows <small>Beta</small></button>
+      <i class="ostab-ink" aria-hidden="true"></i>
+    </div>
+
+    <div class="os-panel on" data-panel="mac" role="tabpanel" aria-labelledby="tab-mac">
+      <div class="dl-card">
+        <div class="dl-main">
+          <h3>Quillio for Mac</h3>
+          <p>macOS 12 (Monterey) or newer. Intel and Apple silicon. Installs about 450 MB of packages the first time.</p>
+          <a class="btn btn-lime btn-lg" href="downloads/Quillio-Installer.pkg" download data-track="mac"><svg class="ico"><use href="#i-setup"/></svg>Download for Mac</a>
+          <p class="file"><span>Quillio-Installer.pkg</span><span>540 KB</span></p>
+          <button class="hash" data-copy="1bf6ef34cfc8b6d43f6d69c392262dc31a6b6ae2fa64961ccd2cca888b767646"><svg class="ico"><use href="#i-copy"/></svg><span>SHA-256 1bf6ef34…7646</span></button>
+        </div>
+        <ol class="inst">
+          <li><b>Open the file.</b> On your Mac, double-click <code>Quillio-Installer.pkg</code> in Downloads. macOS says it "could not verify" it because the installer is not signed with an Apple developer certificate. Click <em>Done</em>.</li>
+          <li><b>Allow it once.</b> Open System Settings, then Privacy &amp; Security, scroll to Security and click <em>Open Anyway</em>. Or, in Terminal on your Mac: <span class="cmd"><code>xattr -d com.apple.quarantine ~/Downloads/Quillio-Installer.pkg</code><button data-copy="xattr -d com.apple.quarantine ~/Downloads/Quillio-Installer.pkg" aria-label="Copy command"><svg class="ico"><use href="#i-copy"/></svg></button></span></li>
+          <li><b>Follow the wizard.</b> Click through Welcome, Read Me, License (click <em>Agree</em>) and Install, then enter your Mac administrator password. Wait for the Finish screen.</li>
+          <li><b>Create the admin PIN.</b> The Quillio window opens. Choose a PIN of 4 to 32 characters. You need it for Exit, parent unlock and settings.</li>
+        </ol>
+      </div>
+      <details class="more">
+        <summary>Install from source in Terminal instead</summary>
+        <p>On your Mac, download <a href="downloads/Quillio-Source.zip" download>Quillio-Source.zip</a> (186 KB), unzip it in Downloads, then run in Terminal:</p>
+        <div class="code"><pre><code>cd ~/Downloads/quillio
+./install.sh</code></pre><button data-copy="cd ~/Downloads/quillio&#10;./install.sh" aria-label="Copy commands"><svg class="ico"><use href="#i-copy"/></svg></button></div>
+        <p>For a child's Standard account, sign in as the Administrator and use the hardened install. Replace <code>CHILDACCOUNT</code> with the child's short account name (run <code>ls /Users</code> to see it):</p>
+        <div class="code"><pre><code>sudo ./install.sh --system --user CHILDACCOUNT</code></pre><button data-copy="sudo ./install.sh --system --user CHILDACCOUNT" aria-label="Copy command"><svg class="ico"><use href="#i-copy"/></svg></button></div>
+      </details>
+    </div>
+
+    <div class="os-panel" data-panel="win" role="tabpanel" aria-labelledby="tab-win" hidden>
+      <div class="dl-card">
+        <div class="dl-main">
+          <h3>Quillio for Windows <span class="beta">Beta</span></h3>
+          <p>Windows 10 or 11. This version has not been tested on a real PC yet, so expect rough edges and tell us what you find. Installs about 300 MB of packages.</p>
+          <a class="btn btn-lime btn-lg" href="downloads/Quillio-Setup.exe" download data-track="win"><svg class="ico"><use href="#i-setup"/></svg>Download for Windows</a>
+          <p class="file"><span>Quillio-Setup.exe</span><span>2.1 MB</span></p>
+          <button class="hash" data-copy="4ff474b6612623ea02fc01aaacede8d36075f092176a5372717332e047904881"><svg class="ico"><use href="#i-copy"/></svg><span>SHA-256 4ff474b6…4881</span></button>
+        </div>
+        <ol class="inst">
+          <li><b>Open the file.</b> On the Windows PC, signed in as an administrator, double-click <code>Quillio-Setup.exe</code>. SmartScreen says "Windows protected your PC" because the file is not signed. Click <em>More info</em>, then <em>Run anyway</em>.</li>
+          <li><b>Accept the license.</b> Tick <em>I accept</em>, then type the Windows user name of the account that is guarded. Other accounts, including yours, are not affected.</li>
+          <li><b>Install.</b> It downloads a private copy of Python and the packages. This takes several minutes.</li>
+          <li><b>Create the admin PIN.</b> Leave <em>Open Quillio now</em> ticked on the Finish page and choose your PIN in the window.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="check-card">
+      <h3>Check that it works</h3>
+      <ol>
+        <li>Open an app on your list (Roblox is the starter app). It closes at once and the exam appears.</li>
+        <li>Click <em>Start the quiz</em> and answer. Reach the pass mark and click <em>Open</em>. You have 3 minutes to start the app.</li>
+        <li>Close the app. A few seconds later it is guarded again.</li>
+        <li>Want to rehearse without closing anything? Press <em>Preview quiz app</em> in the dashboard.</li>
+      </ol>
+    </div>
+
+    <details class="more dark">
+      <summary>Uninstall</summary>
+      <p><b>Mac.</b> Open <em>Uninstall Quillio</em> in Applications. Or, in Terminal from the <code>quillio</code> folder, run <code>./uninstall.sh</code> (add <code>sudo</code> for a hardened install).</p>
+      <p><b>Windows.</b> Open Settings, Apps, Quillio, Uninstall. It asks whether to keep your quiz data.</p>
+      <p>Your apps work normally straight away.</p>
+    </details>
+  </div>
+</section>
+
+<!-- ============ PARENT GUIDE ============ -->
+<section class="sec sec-paper" id="guide" data-mood="guide" aria-labelledby="h-guide">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="h-guide">Parent guide</h2>
+      <p>Everything is managed in the Quillio app window. Pick a task.</p>
+    </div>
+    <div class="guide" id="guide-ui">
+      <div class="g-list" role="tablist" aria-label="Guide topics" aria-orientation="vertical"></div>
+      <div class="g-view">
+        <figure class="g-shot"><img id="gImg" src="assets/dash-overview.webp" alt="" width="1200" height="750" loading="lazy"></figure>
+        <div class="g-text" id="gText" aria-live="polite"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ READ ME ============ -->
+<section class="sec sec-lime" id="readme" data-mood="readme" aria-labelledby="h-readme">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="h-readme">Read me</h2>
+      <p>The plain details, including what Quillio cannot do.</p>
+    </div>
+    <div class="rtabs" role="tablist" aria-label="Read me sections">
+      <button role="tab" aria-selected="true" data-r="overview">Overview</button>
+      <button role="tab" aria-selected="false" data-r="req">Requirements</button>
+      <button role="tab" aria-selected="false" data-r="rules">Quiz rules</button>
+      <button role="tab" aria-selected="false" data-r="limits">Limits</button>
+      <button role="tab" aria-selected="false" data-r="faq">FAQ</button>
+    </div>
+    <div class="rpanel on" data-rp="overview" role="tabpanel">
+      <div class="two">
+        <div>
+          <h3>What it is</h3>
+          <p>A local, offline quiz and assessment app that you customize completely: your own subjects, questions, number of questions per exam and pass mark. It includes 80 starter questions (Grade 5, 8 subjects) that you can edit, delete or replace. Its optional app gate puts a full-screen exam in front of the apps you choose, and the app opens only after the pass mark is reached (70 out of 100 by default). Each guarded app can have its own rules. An Exit button closes the exam after the admin PIN is entered.</p>
+          <p>Parents manage everything in the Quillio app window. The hedgehog is happy when the exam is passed and sad when it is not.</p>
+        </div>
+        <div>
+          <h3>What is in it</h3>
+          <ul class="ticks">
+            <li><b>Quiz.</b> A full-screen window with multiple-choice questions (10 by default), instant feedback and no timer.</li>
+            <li><b>Monitor.</b> A background service that closes your guarded apps until the exam is passed.</li>
+            <li><b>Dashboard.</b> Questions, progress, app lock and settings in one app window.</li>
+            <li><b>Storage.</b> One database file on the computer. Nothing is sent anywhere.</li>
+          </ul>
+          <p>Subjects: Mathematics, Science, English, Filipino, Araling Panlipunan, MAPEH, Computer Studies and General Knowledge.</p>
+        </div>
+      </div>
+    </div>
+    <div class="rpanel" data-rp="req" role="tabpanel" hidden>
+      <div class="two">
+        <div>
+          <h3>Mac</h3>
+          <ul class="ticks">
+            <li>macOS 12 (Monterey) or newer.</li>
+            <li>Internet for the install only, about 450 MB of packages.</li>
+            <li>The installer finds Python 3.9 to 3.13, or downloads the official one if none is installed.</li>
+            <li>Best setup: you keep the Administrator account and the child uses a Standard account.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Windows (Beta)</h3>
+          <ul class="ticks">
+            <li>Windows 10 or 11 and an administrator to run the installer.</li>
+            <li>Internet for the install only, about 300 MB. It uses its own private copy of Python.</li>
+            <li>It installs to <code>C:\Program Files\Quillio</code> and protects the one Windows account you name.</li>
+            <li>Not yet tested on a real PC.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="rpanel" data-rp="rules" role="tabpanel" hidden>
+      <ul class="ticks wide">
+        <li>10 questions per exam by default (1 to 100), spread as evenly as possible over the enabled subjects. Each app can use another number.</li>
+        <li>Questions seen least are picked first, so a retry rarely repeats the last exam.</li>
+        <li>Score is correct answers divided by questions times 100, rounded down. 7 of 10 is 70 and passes. 6 of 10 is 60 and does not.</li>
+        <li>There is no time limit.</li>
+        <li>A failed attempt cannot open the app. The buttons are <em>Try again</em>, <em>Parent: open without the quiz</em> (PIN) and <em>Exit</em> (PIN).</li>
+        <li>An exam closed with Exit shows as "Unfinished" in the history and does not count as a score.</li>
+        <li>By default a pass lasts until the app is closed, then it locks again about 8 seconds later. Set a number of minutes (Settings, or per app) to ask for a new exam on that schedule, for example every 30 minutes.</li>
+        <li>An app can ask for 1 to 5 exams in a row. Failing one starts the count again.</li>
+        <li>Parent unlock lasts 30 minutes by default. Five wrong PIN attempts lock PIN entry for 5 minutes.</li>
+      </ul>
+    </div>
+    <div class="rpanel" data-rp="limits" role="tabpanel" hidden>
+      <div class="note">
+        <p><b>Quillio is a strong guard for a child, not a security boundary against a determined user.</b> Neither macOS nor Windows lets an ordinary program truly lock another app. Quillio watches running apps and closes guarded apps when they have not been unlocked.</p>
+      </div>
+      <ul class="ticks wide">
+        <li>Anyone with access to the protected account's Terminal or Task Manager can stop the services or edit the data. A Standard account plus the hardened Mac install makes casual attempts much harder.</li>
+        <li>Use Apple Screen Time or Windows Family Safety as a second layer. They cannot run a quiz, but they block things Quillio cannot see.</li>
+        <li>There is a short gap. The monitor checks about every half second, so an app may flash on screen briefly before it closes. Unsaved work in a guarded app is lost on purpose.</li>
+        <li>On Windows, Microsoft Store apps use a different program name. Add them under App Lock while they run.</li>
+        <li>Windows does not let a program block Alt+Tab or the Windows key, so the exam is a full-screen window on top that is raised again every second.</li>
+        <li>The installers are not code-signed, so macOS Gatekeeper and Windows SmartScreen show a warning the first time.</li>
+      </ul>
+    </div>
+    <div class="rpanel" data-rp="faq" role="tabpanel" hidden>
+      <div class="faq">
+        <details><summary>Which apps are blocked?</summary><p>Only the ones on your App Lock list. Roblox is there to start with. Add or remove any app, such as Minecraft, a browser or Discord. Everything else opens normally.</p></details>
+        <details><summary>Can different apps have different rules?</summary><p>Yes. Under App Lock, press <em>Edit rules</em> on an app to set its questions per exam, pass mark, unlock minutes, exams in a row and subjects. Anything left empty uses the defaults from Settings.</p></details>
+        <details><summary>The Quillio window is blank on my Mac. What now?</summary><p>Quillio starts its window through macOS itself and opens the dashboard in your browser if the window is ever blank. If neither works, open Terminal on the Mac and run <code>"/Library/Application Support/AcademicHub/bin/open-window.sh"</code>, then send us the files in <code>~/Library/Logs/AcademicHub</code> through the Contact form.</p></details>
+        <details><summary>Does it need the internet?</summary><p>Only to install. After that it works offline, and the dashboard only listens on your own computer (127.0.0.1).</p></details>
+        <details><summary>Is anything uploaded?</summary><p>No. Questions, scores and your PIN stay in one database file on the computer. There is no account and no cloud.</p></details>
+        <details><summary>What if I forget the PIN?</summary><p>On a Mac, run <code>quillio set-pin</code> in Terminal as the protected account to choose a new one. See the commands in the source README.</p></details>
+        <details><summary>Can I use my own questions?</summary><p>Yes. Add them one by one in Quiz Library, or import a JSON or CSV file in Import / Export. A bad row cancels the whole import so nothing is half-changed.</p></details>
+        <details><summary>How do I pause it for a day?</summary><p>Open App Lock and switch Protection off. Switch it on again when you are done.</p></details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="sec sec-ink" id="contact" data-mood="contact" aria-labelledby="h-contact">
+  <div class="wrap contact-grid">
+    <div class="sec-head">
+      <h2 id="h-contact">Contact</h2>
+      <p>Found a bug, need a feature, or stuck on setup? Tell us what computer you use and what you saw. Anyone can write to us, no account needed.</p>
+      <ul class="clinks">
+        <li><a class="ncard dark" id="lnkMail" href="mailto:tristanbalane@gmail.com"><svg class="ico"><use href="#i-mail"/></svg><b>Email us</b><span id="mailText">tristanbalane@gmail.com</span><svg class="go"><use href="#i-arrow"/></svg></a></li>
+        <li><a class="ncard dark" id="lnkLinkedin" href="#" target="_blank" rel="noopener" hidden><svg class="ico"><use href="#i-linkedin"/></svg><b>Made by RED®</b><span>Find me on LinkedIn</span><svg class="go"><use href="#i-arrow"/></svg></a></li>
+      </ul>
+    </div>
+    <form class="cform" id="cform" novalidate>
+      <label>Your name<input name="name" autocomplete="name" required></label>
+      <label>Your email (so we can reply)<input name="email" type="email" autocomplete="email" required></label>
+      <label>Topic
+        <select name="topic"><option>Setup help</option><option>Bug report</option><option>Feature request</option><option>Something else</option></select>
+      </label>
+      <label>Message<textarea name="message" rows="5" required></textarea></label>
+      <p class="ferr" id="ferr" role="alert" hidden></p>
+      <div class="frow"><button class="btn btn-lime" type="submit" id="fsend">Send message</button><button class="btn btn-ghost-dark" type="button" id="fcopy">Copy message</button></div>
+      <p class="fine" id="fnote"></p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div class="foot-brand"><span class="brand-mark" id="footMark" aria-hidden="true"></span><div><b>Quillio</b><span>Learn Your Way In.</span></div></div>
+    <ul class="foot-links">
+      <li><a href="#how">How it works</a></li><li><a href="#setup">Setup</a></li><li><a href="#guide">Guide</a></li><li><a href="#readme">Read me</a></li><li><a href="#contact">Contact</a></li>
+    </ul>
+    <p class="foot-small">Made by RED®. Roblox and other app names are trademarks of their owners. Quillio is not affiliated with or endorsed by them.</p>
+  </div>
+</footer>
+
+<!-- little companion that follows you down the page -->
+<div class="companion" id="companion" aria-hidden="true"><div class="mascot-host tiny" id="miniMascot"></div></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="assets/config.js"></script>
+<script src="assets/mascot.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
